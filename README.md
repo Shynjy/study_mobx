@@ -43,6 +43,8 @@ part 'controller_mobx.g.dart';
 
 class ControllerMobx = _ControllerMobx with _$ControllerMobx;
 
+// with --> justa as classes
+// Store --> sinaliza que esse documento deve ser todo observado
 abstract class _ControllerMobx with Store {
 @observable
 int count = 0;
@@ -51,5 +53,15 @@ int count = 0;
 void increment() {
     count++;
 }
+}
+```
+## O mobx tem um listner por padrão, chamdo de autorun
+
+
+```dart
+_Contrutor() {
+    autorun((_){
+        <!-- Toda mudança de um observable é escutada aqui -->
+    });
 }
 ```
