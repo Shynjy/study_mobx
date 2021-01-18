@@ -53,3 +53,11 @@ void increment() {
 }
 }
 ```
+
+## Para ficar escutando a modificação de um valor usa-se o autorun()
+
+```dart
+autorun(){
+    
+}
+```
