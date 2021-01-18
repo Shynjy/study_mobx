@@ -61,6 +61,21 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$passwordVisibleAtom = Atom(name: '_LoginStore.passwordVisible');
+
+  @override
+  bool get passwordVisible {
+    _$passwordVisibleAtom.reportRead();
+    return super.passwordVisible;
+  }
+
+  @override
+  set passwordVisible(bool value) {
+    _$passwordVisibleAtom.reportWrite(value, super.passwordVisible, () {
+      super.passwordVisible = value;
+    });
+  }
+
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
@@ -86,10 +101,22 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   @override
+  void togglePasswordVisible() {
+    final _$actionInfo = _$_LoginStoreActionController.startAction(
+        name: '_LoginStore.togglePasswordVisible');
+    try {
+      return super.togglePasswordVisible();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 email: ${email},
 password: ${password},
+passwordVisible: ${passwordVisible},
 isEmailValid: ${isEmailValid},
 isPasswordValid: ${isPasswordValid},
 isFormValid: ${isFormValid}
