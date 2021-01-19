@@ -55,15 +55,7 @@ void increment() {
 }
 }
 ```
-<<<<<<< HEAD
-
-## Para ficar escutando a modificação de um valor usa-se o autorun()
-
-```dart
-autorun(){
-    
-=======
-## O mobx tem um listner por padrão, chamdo de autorun
+## O mobx têm alguns listeners por padrão, autorun e reaction
 
 
 ```dart
@@ -71,6 +63,23 @@ _Contrutor() {
     autorun((_){
         <!-- Toda mudança de um observable é escutada aqui -->
     });
->>>>>>> 9fef58a4cea73ec0ef73c952454fbd5360f332c0
 }
+
+
+// 
+@override
+void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    reaction(fn, effect)
+}
+```
+OBS: O reaction deve ser finalizado após a saída da tela de uso, para isso basta, atribuir o reaction a uma variável e executar no dispose()
+
+
+## Criando um List em mobx
+
+
+```dart
+ObservableList<String> nomeDaList = ObservableList<String>();
 ```
